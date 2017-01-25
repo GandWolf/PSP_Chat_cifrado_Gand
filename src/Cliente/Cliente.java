@@ -6,25 +6,20 @@
 package Cliente;
 
 
-import static cliente_cifrado_manuel.HiloEntrada.ipDestino;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author usuario
  */
-public class Cliente_Cifrado_Manuel {
+public class Cliente {
 
     /**
      * @param args the command line arguments
      */
     static String ipDestino="127.0.0.1";
-        static int puerto = 15000;
+    static int puerto = 15000;
     static Socket socket;
     public static void main(String[] args)
     {
