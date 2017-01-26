@@ -13,7 +13,6 @@ public class vzxc {
         char [] contrasena = new char[10];
         boolean pass = false;
 
-        System.out.println("empezamos");
 
         while (!pass){
             boolean may = false;
@@ -36,6 +35,8 @@ public class vzxc {
                         break;
                 }
             }
+
+            String passw = new String(contrasena);
             if(may && min && nume && esp){
                 pass=true;
                 break;
