@@ -1,5 +1,5 @@
 
-package Chat;
+package Chat.Server;
 
 /**
  *
@@ -14,11 +14,14 @@ public class Usuario{
    private int id;
    private BufferedReader entrada;
    private PrintWriter salida;
-   public Usuario(String n, int i, BufferedReader a, PrintWriter b){
-      nombre=n;
-      id=i;
-      entrada=a;
-      salida=b;
+   private String passw;
+
+   public Usuario(String nombre, int id, BufferedReader entrada, PrintWriter salida, String passw) {
+      this.nombre = nombre;
+      this.id = id;
+      this.entrada = entrada;
+      this.salida = salida;
+      this.passw = passw;
    }
    public Usuario(String n, int i){
       nombre=n;
@@ -29,6 +32,7 @@ public class Usuario{
    public int getId()                   {      return id;   }
    public BufferedReader getEntrada()   {      return entrada;   }
    public PrintWriter getSalida()       {      return salida;   }
+   public String getPassw()             {      return passw;   }
 
    //-----------------------------------------------------------------------------------
    public void setEntrada(BufferedReader b) {      entrada=b;   }

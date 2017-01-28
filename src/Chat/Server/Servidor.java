@@ -1,5 +1,5 @@
 
-package Chat;
+package Chat.Server;
 
 /**
  *
@@ -19,20 +19,18 @@ public class Servidor {
     
     public static void main(String [] args){
        
-       System.out.println("+-------------------------------------------------------------------------+");
-       System.out.println("|                         +---------------------+                         |");
-       System.out.println("| <<-<-<-<+>->-> #### <<<<| Calculadora Abierta |>>>> #### <-<-<+>->->->> |");
-       System.out.println("|                         +---------------------+                         |");
-       System.out.println("+-------------------------------------------------------------------------+");
+       System.out.println("+----------------------------+");
+       System.out.println("|<<<<| SERVIDOR CIFRADO |>>>>|");
+       System.out.println("+----------------------------+");
         try(
                      ServerSocket serv = new ServerSocket(PTO);
         )
         {
-            HiloExit ext=new HiloExit();
+            HiloServidor ext=new HiloServidor();
             Thread ser=new Thread(ext);
             ser.start();
            while(true){
-              HiloServidor mh = new HiloServidor(serv.accept(), nUsu);
+              HiloUsuarios mh = new HiloUsuarios(serv.accept(), nUsu);
               Thread hilo = new Thread(mh);
               hilo.setName("Conexion Usuario[" + nUsu + "]");
               hilo.start();
@@ -43,7 +41,6 @@ public class Servidor {
            System.err.println("Error al INICIALIZAR servidor, mensaje de error: " + ex.getMessage());
            
         }
-
     }
     //-----------------------------------------------------------------------------------------
 
