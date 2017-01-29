@@ -1,21 +1,15 @@
 
-package Chat.User;
+package User;
 
 /**
  *
  * @author gand
  */
 
-import Chat.Server.Cifrado;
-import Chat.Server.Servidor;
-import Chat.Server.Usuario;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Iterator;
 
 
 public class HiloEntrada implements Runnable{
@@ -31,15 +25,13 @@ public class HiloEntrada implements Runnable{
   //---------------------------------------------------------------------------------------------------------------
    @Override
    public void run(){
-        try(
-           BufferedReader in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-        )
+        try{
+            BufferedReader in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
 
-        {
-            IN=in;
+//            IN=in;
             String cadena = "";
             while(true) {
-                cadena = IN.readLine();
+                cadena = in.readLine().trim();
 
                 if (Cliente.passw == null) {
                     Cliente.passw = cadena;
@@ -47,19 +39,22 @@ public class HiloEntrada implements Runnable{
 
                     cf.setFrase(cadena);
                     String cad = cf.Decodifica(Cliente.passw);
-                    if (cad.trim().equals("exit") || cad.trim().equals("quit") || cad == null) {
+                    if (cad.trim().equals("exit") || cad.trim().equals("quit")) {
                         System.out.println("Cerrando cliente...");
                         break;
                     } else {
-                        System.out.println("cad");
+                        System.out.println(cad);
                     }
                 }
             }
-        }catch(IOException ex){
-           System.err.println(ex.getMessage());
+
         }catch(NullPointerException ex){
-           System.err.println(ex.getMessage());
+           System.err.println("Pero porrrrrrrrrrr queeeeeeee"+ex.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
    }//Fin run
+
+
 }//Fin class

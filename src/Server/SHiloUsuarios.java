@@ -1,5 +1,5 @@
 
-package Chat.Server;
+package Server;
 
 /**
  *
@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.Iterator;
 
 
-public class HiloUsuarios implements Runnable{
+public class SHiloUsuarios implements Runnable{
    private Socket micon;
    private int id_usu;
    private BufferedReader IN;
@@ -21,7 +21,7 @@ public class HiloUsuarios implements Runnable{
 
     Cifrado cf = new Cifrado();
 
-   public HiloUsuarios(Socket con, int n) {
+   public SHiloUsuarios(Socket con, int n) {
         micon=con;
         id_usu=n;
    }
@@ -46,9 +46,9 @@ public class HiloUsuarios implements Runnable{
             cf.setFrase("-> Teclee \"exit\" o \"quit\" para salir.");
             OUT.println(cf.Codifica(usu.getPassw()));
 
-            String cadena = "";
+//            String cadena = "";
             while(true){
-                cadena = IN.readLine();
+                String cadena = in.readLine();
 
                 cf.setFrase(cadena);
                 String cad = cf.Decodifica(usu.getPassw());

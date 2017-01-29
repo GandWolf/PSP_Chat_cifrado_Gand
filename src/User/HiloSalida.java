@@ -1,16 +1,12 @@
 
-package Chat.User;
+package User;
 
 /**
  *
  * @author gand
  */
 
-import Chat.Server.Cifrado;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -30,11 +26,8 @@ public class HiloSalida implements Runnable{
   //---------------------------------------------------------------------------------------------------------------
    @Override
    public void run(){
-        try(
-                PrintWriter out = new PrintWriter(sc.getOutputStream(), true);
-        )
-
-        {
+        try{
+            PrintWriter out = new PrintWriter(sc.getOutputStream(), true);
             OUT=out;
 
             while(true) {

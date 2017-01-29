@@ -1,5 +1,5 @@
 
-package Chat.Server;
+package Server;
 
 /**
  *
@@ -26,11 +26,11 @@ public class Servidor {
                      ServerSocket serv = new ServerSocket(PTO);
         )
         {
-            HiloServidor ext=new HiloServidor();
+            SHiloSalida ext=new SHiloSalida();
             Thread ser=new Thread(ext);
             ser.start();
            while(true){
-              HiloUsuarios mh = new HiloUsuarios(serv.accept(), nUsu);
+              SHiloUsuarios mh = new SHiloUsuarios(serv.accept(), nUsu);
               Thread hilo = new Thread(mh);
               hilo.setName("Conexion Usuario[" + nUsu + "]");
               hilo.start();

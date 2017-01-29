@@ -1,25 +1,23 @@
 
-package Chat.Server;
+package Server;
 
 /**
  *
  * @author gand
  */
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 
-public class HiloServidor implements Runnable {
+public class SHiloSalida implements Runnable {
 
     private Cifrado cf = new Cifrado();
 
     @Override
     public void run() {
-        Scanner entrada=new Scanner(System.in);
-        
-        while (true){  
-            String cad=entrada.nextLine();
+        while (true){
+            Scanner entrada = new Scanner(System.in);
+            String cad = entrada.nextLine();
             if (cad.equalsIgnoreCase("exit")){
                 System.out.println("Cerrando Servidor...");
                 System.exit(0); 

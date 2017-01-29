@@ -1,4 +1,4 @@
-package Chat.Server;
+package Server;
 
 import javax.crypto.*;
 import javax.crypto.spec.DESedeKeySpec;

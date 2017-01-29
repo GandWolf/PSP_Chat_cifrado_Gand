@@ -1,4 +1,4 @@
-package Chat.User;
+package User;
 
 import javax.crypto.*;
 import javax.crypto.spec.DESedeKeySpec;
