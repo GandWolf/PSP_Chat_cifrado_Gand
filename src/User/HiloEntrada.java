@@ -28,33 +28,22 @@ public class HiloEntrada implements Runnable{
         try{
             BufferedReader in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
 
-//            IN=in;
-            String cadena = "";
+            IN=in;
             while(true) {
-                cadena = in.readLine().trim();
+                String cadena = IN.readLine().trim();
 
                 if (Cliente.passw == null) {
                     Cliente.passw = cadena;
                 } else {
-
-                    cf.setFrase(cadena);
-                    String cad = cf.Decodifica(Cliente.passw);
-                    if (cad.trim().equals("exit") || cad.trim().equals("quit")) {
-                        System.out.println("Cerrando cliente...");
-                        break;
-                    } else {
-                        System.out.println(cad);
-                    }
+                    String cad = cf.Decodifica(cadena,Cliente.passw);
+                    System.out.println(cad);
                 }
             }
-
         }catch(NullPointerException ex){
-           System.err.println("Pero porrrrrrrrrrr queeeeeeee"+ex.getMessage());
+           System.err.println(ex.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
    }//Fin run
-
-
 }//Fin class

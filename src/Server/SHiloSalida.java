@@ -17,13 +17,13 @@ public class SHiloSalida implements Runnable {
     public void run() {
         while (true){
             Scanner entrada = new Scanner(System.in);
-            String cad = entrada.nextLine();
-            if (cad.equalsIgnoreCase("exit")){
+            String cad = "[SERVIDOR]> "+entrada.nextLine();
+            if (cad.equalsIgnoreCase("exit") || cad.equalsIgnoreCase("quit")){
                 System.out.println("Cerrando Servidor...");
-                System.exit(0); 
+                System.exit(0);
             }else{
                 for (Usuario u : Servidor.listaUsuarios){
-                    u.getSalida().println(cf.Codifica(u.getPassw()));
+                    u.getSalida().println(cf.Codifica(cad,u.getPassw()));
                 }
             }
         }

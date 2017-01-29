@@ -37,24 +37,24 @@ public class SHiloUsuarios implements Runnable{
             IN=in;
             OUT=out;
             generaUsuario();
-            System.out.println("Nueva CONEXION del Usuario[" + id_usu + "]");
+            String conexion = "Nueva CONEXION del Usuario[" + id_usu + "]";
+            System.out.println(conexion);
             OUT.println(usu.getPassw());
+            publicarMensaje(conexion);
 
-            cf.setFrase("-> Conectado Correctamente Chat V1.0 ;-)");
-            OUT.println(cf.Codifica(usu.getPassw()));
+            conexion=("-> Conectado Correctamente Chat Cifrado Simetrico V2.0 como ["+ usu.getNombre() + "]");
+            OUT.println(cf.Codifica(conexion,usu.getPassw()));
 
-            cf.setFrase("-> Teclee \"exit\" o \"quit\" para salir.");
-            OUT.println(cf.Codifica(usu.getPassw()));
+            conexion=("-> Teclee \"exit\" o \"quit\" para salir.");
+            OUT.println(cf.Codifica(conexion,usu.getPassw()));
 
-//            String cadena = "";
             while(true){
-                String cadena = in.readLine();
+                String cadena = IN.readLine();
 
-                cf.setFrase(cadena);
-                String cad = cf.Decodifica(usu.getPassw());
+                String cad = cf.Decodifica(cadena,usu.getPassw());
                 if(cad.trim().equals("exit") || cad.trim().equals("quit") || cad==null) break;
-                System.out.println("["+ usu.getNombre() + "]> " + cad);
 
+                System.out.println("["+ usu.getNombre() + "]> " + cad);
                 publicarMensaje(cad);
             }
 
@@ -73,12 +73,10 @@ public class SHiloUsuarios implements Runnable{
     //-----------------------------------------------------------------------------------------------------------------
     public void publicarMensaje(String cad){
         String cadena = ("["+ usu.getNombre() + "]> " + cad);
-        cf.setFrase(cadena);
-        Iterator<Usuario> losUsuarios = Servidor.listaUsuarios.iterator();
-        while(losUsuarios.hasNext()){
-            Usuario u = losUsuarios.next();
+
+        for (Usuario u : Servidor.listaUsuarios){
             if(u.getId()!=id_usu){
-                u.getSalida().println(cf.Codifica(u.getPassw()));
+                u.getSalida().println(cf.Codifica(cadena, u.getPassw()));
             }
         }
     }

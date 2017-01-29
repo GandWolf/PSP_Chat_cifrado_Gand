@@ -30,19 +30,21 @@ public class HiloSalida implements Runnable{
             PrintWriter out = new PrintWriter(sc.getOutputStream(), true);
             OUT=out;
 
+            teclado = new Scanner(System.in);
             while(true) {
                 String cad=teclado.nextLine().trim();
                 if (cad.equalsIgnoreCase("exit")){
                     System.out.println("Cerrando Cliente...");
-                    System.exit(0);
+                    break;
                 }else{
-                    OUT.println(cf.Codifica(cad));
+                    OUT.println(cf.Codifica(cad, Cliente.passw));
                 }
             }
+            OUT.close();
         }catch(IOException ex){
-           System.err.println(ex.getMessage());
+           System.err.println("Error IO SALIDA CLIENTE"+ex.getMessage());
         }catch(NullPointerException ex){
-           System.err.println(ex.getMessage());
+           System.err.println("Error NULL SALIDA CLIENTE"+ex.getMessage());
         }
 
    }//Fin run

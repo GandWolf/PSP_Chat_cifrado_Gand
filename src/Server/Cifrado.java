@@ -41,7 +41,8 @@ public class Cifrado {
             }
         }
         //--------------------------------------------------------------------------
-        public String Codifica(String clave){
+        public String Codifica(String frase,String clave){
+            this.frase = frase;
             this.clave = clave;
             pass=generaPass();
             initCipher();
@@ -69,7 +70,8 @@ public class Cifrado {
             return frase_enc;
         }
         //--------------------------------------------------------------------------
-        public String Decodifica(String clave){
+        public String Decodifica(String frase, String clave){
+            this.frase = frase;
             this.clave = clave;
             pass=generaPass();
             initCipher();
